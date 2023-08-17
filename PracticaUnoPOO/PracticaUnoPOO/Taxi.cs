@@ -21,11 +21,10 @@ namespace PracticaUnoPOO
         }
         public override void Avanzar()
         {
-            Console.WriteLine("avanzando.");
+           
         }
         public override void Detenerse()
         {
-            Console.WriteLine("frenando");
         }
 
 

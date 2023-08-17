@@ -9,133 +9,136 @@ namespace PracticaUnoPOO
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static List<TransportePublico> transportes = new List<TransportePublico>();
+        private static int taxisRegistrados = 0;
+        private static int omnibusRegistrados = 0;
+
+        private static void Main(string[] args)
         {
-            List<TransportePublico> transportes = new List<TransportePublico>();
             while (true)
             {
+                MostrarMenu();
+                int opcion;
+                bool opcionValida = int.TryParse(Console.ReadLine(), out opcion);
+                Console.Clear();
+
+                if (!opcionValida)
+                {
+                    Console.WriteLine("Entrada inválida. Por favor, ingrese un número válido.");
+                    Console.ReadLine();
+                    continue;
+                }
+
+                switch (opcion)
+                {
+                    case 1:
+                        RegistrarTaxi();
+                        break;
+                    case 2:
+                        RegistrarOmnibus();
+                        break;
+                    case 3:
+                        MostrarInformacion();
+                        break;
+                    default:
+                        Console.WriteLine("Opción inválida. Por favor, elija una opción válida.");
+                        break;
+                }
+            }
+        }
+        private static void MostrarMenu()
+        {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("         ╔════════════════════════════════════╗");
+            Console.WriteLine("\n\n         ╔════════════════════════════════════╗");
             Console.WriteLine("         ║          Bienvenido                ║");
             Console.WriteLine("         ║    Elija el tipo de transporte:    ║");
             Console.WriteLine("         ║        1. Taxi                     ║");
             Console.WriteLine("         ║        2. Ómnibus                  ║");
             Console.WriteLine("         ║        3. Finalizar                ║");
             Console.WriteLine("         ║                                    ║");
-            Console.WriteLine("         ╚════════════════════════════════════╝");
-            Console.WriteLine("");
-            Console.WriteLine("");
-                        
-            int opcion = Convert.ToInt32(Console.ReadLine());
-            Console.Clear();
-            switch(opcion) 
+            Console.WriteLine("         ╚════════════════════════════════════╝\n\n");
+        }
+        private static void RegistrarTaxi()
+        {
+            if (taxisRegistrados >= 5)
             {
-                    case 1:
-                        Console.Clear();
-                        Console.WriteLine("");
-                        Console.WriteLine("     Ingrese la cantidad de pasajeros para el Taxi:");
-                        Console.WriteLine("");
-                        int canPasajerosTaxi = 0;
-                        bool cantidadValida = false;
-                        while (!cantidadValida)
-                        {
-                            if (int.TryParse(Console.ReadLine(), out canPasajerosTaxi))
-                            {
-                                Console.Clear();
-                                if (canPasajerosTaxi >= 1 && canPasajerosTaxi <= 4)
-                                {
-                                    cantidadValida = true;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("");
-                                    Console.WriteLine("     Cantidad inválida. Por favor, ingrese una cantidad válida (1-4).");
-                                    Console.WriteLine("");
-                                }
-                                
-                            }
+                Console.WriteLine("Ya se han registrado 5 taxis. No es posible registrar más.");
+                Console.ReadLine();
+                return;
+            }
 
-                            else
-                            {
-                                Console.WriteLine("");
-                                Console.WriteLine("     Entrada inválida. Por favor, ingrese un número válido.");
-                                Console.WriteLine("");
-                            }
-                        }
-                        Taxi taxi = new Taxi(canPasajerosTaxi);
-                        transportes.Add(taxi);
-                        break;
-                    case 2:
-                        Console.Clear();
-                        Console.WriteLine("");
-                        Console.WriteLine("     Ingrese la cantidad de pasajeros para el Ómnibus:");
-                        Console.WriteLine("");
-                        int canPasajerosOmnibus = 0;
-                        cantidadValida = false;
-                        while (!cantidadValida)
-                        {
-                            if (int.TryParse(Console.ReadLine(), out canPasajerosOmnibus))
-                            {
-                                Console.Clear();
-                                if (canPasajerosOmnibus >= 1 && canPasajerosOmnibus <= 100)
-                                {
-                                    cantidadValida = true;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("");
-                                    Console.WriteLine("     Cantidad inválida. Por favor, ingrese una cantidad válida (1-120).");
-                                    Console.WriteLine("");
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("");
-                                Console.WriteLine("     Entrada inválida. Por favor, ingrese un número válido.");
-                                Console.WriteLine("");
-                            }
-                        }
-                        Omnibus omnibus = new Omnibus(canPasajerosOmnibus);
-                        transportes.Add(omnibus);
-                        break;
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine("");
-                        Console.WriteLine("     Cantidad de pasajeros en cada transporte: ");
-                        Console.WriteLine("");
-                        foreach (var itm in transportes)
-                        {
-                            if (itm is Taxi)
-                            {
-                                Taxi taxiInfo = itm as Taxi;
-                                Console.WriteLine("");
-                                Console.WriteLine("     Taxi " + taxiInfo.NumeroTaxi +": "+ itm.CanPasajeros+ " pasajeros " );
-                                Console.WriteLine("");
+            int canPasajerosTaxi = SolicitarCantidadPasajeros(1, 4);
+            Taxi taxi = new Taxi(canPasajerosTaxi);
+            transportes.Add(taxi);
+            taxisRegistrados++;
+        }
 
-                            }
-                            else if (itm is Omnibus)
-                            {
-                                Omnibus omnibusInfo = itm as Omnibus;
-                                Console.WriteLine("");
-                                Console.WriteLine("     Ómnibus " + omnibusInfo.NumeroOmnibus + ": "+ itm.CanPasajeros + " pasajeros");
-                                Console.WriteLine("");
+        private static void RegistrarOmnibus()
+        {
+            if (omnibusRegistrados >= 5)
+            {
+                Console.WriteLine("Ya se han registrado 5 Ómnibus. No es posible registrar más.");
+                Console.ReadLine();
+                return;
+            }
 
-                            }
-                            
-                        }
-                        Console.ReadLine();
-                        return;
-                    default:
-                        Console.WriteLine("");
-                        Console.WriteLine("     Opción inválida. Por favor, elija una opción válida.");
-                        Console.WriteLine("");
-                        break;
+            int canPasajerosOmnibus = SolicitarCantidadPasajeros(1, 120);
+            Omnibus omnibus = new Omnibus(canPasajerosOmnibus);
+            transportes.Add(omnibus);
+            omnibusRegistrados++;
+        }
+
+        private static int SolicitarCantidadPasajeros(int min, int max)
+        {
+            int cantidadPasajeros = 0;
+            bool cantidadValida = false;
+
+            while (!cantidadValida)
+            {
+                Console.WriteLine($"Ingrese la cantidad de pasajeros ({min}-{max}):");
+                if (int.TryParse(Console.ReadLine(), out cantidadPasajeros))
+                {
+                    if (cantidadPasajeros >= min && cantidadPasajeros <= max)
+                    {
+                        cantidadValida = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cantidad inválida. Por favor, ingrese una cantidad válida.");
+                    }
                 }
+                else
+                {
+                    Console.WriteLine("Entrada inválida. Por favor, ingrese un número válido.");
+                }
+            }
 
-            }           
-            
+            return cantidadPasajeros;
+        }
+
+        private static void MostrarInformacion()
+        {
+            if (taxisRegistrados >= 5 && omnibusRegistrados >= 5)
+            {
+                Console.WriteLine("Cantidad de pasajeros en cada transporte:\n");
+                foreach (var itm in transportes)
+                {
+                    if (itm is Taxi taxiInfo)
+                    {
+                        Console.WriteLine($"Taxi {taxiInfo.NumeroTaxi}: {itm.CanPasajeros} pasajeros");
+                    }
+                    else if (itm is Omnibus omnibusInfo)
+                    {
+                        Console.WriteLine($"Ómnibus {omnibusInfo.NumeroOmnibus}: {itm.CanPasajeros} pasajeros");
+                    }
+                }
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Deben registrarse 5 taxis y 5 ómnibus antes de mostrar la información.");
+                Console.ReadLine();
+            }
         }
     }
 }

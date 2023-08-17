@@ -20,12 +20,10 @@ namespace PracticaUnoPOO
             get { return numeroOmnibus; }
         }
         public override void Avanzar()
-        {
-            Console.WriteLine("Estoy avanzando.");
+        {         
         }
         public override void Detenerse()
-        {
-            Console.WriteLine("Estoy frenando");
+        {          
         }
 
     }
