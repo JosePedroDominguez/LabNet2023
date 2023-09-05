@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Juego de Adivinanza</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-text">
+            <p>Practica 5 - HTML+CSS+JS</p>
+        </div>
+    </div>
+    <div id="container">
+        <h1>Juego de Adivinanza</h1>
+        <p>Adivina un número entre 0 y 20:</p>
+        <input type="number" id="adivinar" min="0" max="20">
+        <p id="mensaje"></p>
+        <p id="mensaje-ganador" style="display: none;"></p>
+        <p>Puntaje actual: <span id="puntaje">20</span></p>
+        <p>Puntaje más alto: <span id="puntajeMaximo">0</span></p>
+        <button id="verificar">Comprobar</button>
+        <button id="reiniciar" class="reiniciar">Reiniciar</button>
+    </div>
+    <footer class="footer">
+        Desarrollado por Jose Pedro Dominguez 2023 <br>
+        <a href="https://www.linkedin.com/in/jose-pedro-dominguez-4b4014206/" target="_blank"><i
+                class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/JosePedroDominguez" target="_blank"><i class="fab fa-github"></i></a>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

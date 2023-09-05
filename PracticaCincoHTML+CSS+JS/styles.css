@@ -1,0 +1,128 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: #dce8eb;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+h1 {
+    color: white;
+}
+
+button {
+    background-color: #00ff00;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: greenyellow;
+}
+
+p {
+    margin: 10px;
+    color: white;
+}
+
+input {
+    width: 50px;
+    height: 25;
+}
+
+.navbar {
+    background-color: #34495e;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.navbar-text {
+    font-size: 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+#container {
+    background-color: #4a539e;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 40px;
+        background-color: #333;
+        text-align: left;
+    }
+
+    .navbar a:hover {
+        background-color: #555;
+    }
+
+    .navbar-text {
+        font-size: 16px;
+    }
+
+    #container {
+        padding: 10px;
+    }
+}
+
+.footer {
+    background-color: #34495e;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#mensaje-ganador {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+.reiniciar {
+    background-color: #b71008;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    position: static;
+    bottom: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.reiniciar:hover {
+    background-color: #bd3831;
+}
