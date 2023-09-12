@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+  <div class="container">
+
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+      title="Toggle navigation" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+      <ul class="navbar-nav flex-grow-1">
+        <li class="nav-link" (click)="goToHome()">{{title}}</li>
+        <li class="nav-link" (click)="goToShippers()">Transportistas</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<footer class="footer bg-dark text-white mt-5 fixed-bottom">
+  <div class="container text-center">
+    <br />
+    <p>&copy; {{ currentYear }} - {{title}}</p>
+    <p>Desarrollado por Jose Pedro Dominguez</p>
+    <a href="https://www.linkedin.com/in/jose-pedro-dominguez-4b4014206/" target="_blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    &nbsp;
+    <a href="https://github.com/JosePedroDominguez" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+</footer>
+<router-outlet></router-outlet>

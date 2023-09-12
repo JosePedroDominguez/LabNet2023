@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: url(https://images4.alphacoders.com/115/1151249.jpg) no-repeat center fixed;
+    background-size: cover;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    color: rgb(180, 178, 176);
+}
+
+a {
+    color: rgb(171, 150, 111);
+}
+
+p {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    color: rgb(180, 178, 176);
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ffffff;
+    color: rgb(180, 178, 176);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+tr:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+td ul {
+    list-style-type: disc;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgb(171, 150, 111);
+}

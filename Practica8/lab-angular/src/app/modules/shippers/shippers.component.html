@@ -1,0 +1,87 @@
+<main class="container">
+  <h1 class="espacio">Transportistas</h1>
+  <div class="row mt-3" [formGroup]="formSearch">
+    <div class="input-group">
+      <div class="form-outline">
+        <input type="number" class="form-control" formControlName="search" placeholder="Ingrese #" />
+      </div>
+      <button type="button" mat-raised-button color="primary"
+        (click)="searchShippers(formSearch.controls.search.value)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <button type="button" class="btn btn-primary" (click)="toggleSortOrder()">
+        {{ ascending ? 'Ordenar Ascendente' : 'Ordenar Descendente' }}
+      </button>
+
+      <button type="button" class="btn btn-success" (click)="open(content)">
+        <mat-icon>add_box</mat-icon>
+        Nuevo
+      </button>
+    </div>
+
+  </div>
+  <div class="overlay" *ngIf="cardShow">
+    <div class="centered-card">
+      <div>
+        <button type="button" mat-icon-button color="warn" class="close-button" (click)="closeCard()">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      <h2>Transportista</h2>
+      <div class="card-header">#: {{shippers.Id}}</div>
+      <div class="card-header">Nombre: {{shippers.CompanyName}}</div>
+      <div class="card-body">Telefono: {{shippers.Phone}}</div>
+    </div>
+  </div>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Borrar</th>
+        <th scope="col">Actualizar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shipper of listShippers;">
+        <th scope="row">{{shipper.Id}}</th>
+        <td>{{shipper.CompanyName}}</td>
+        <td>{{shipper.Phone}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="handleWarningAlert(shipper.Id)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="getUpdate(shipper); open(content)">
+            <mat-icon>update</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+
+<ng-template #content let-modal>
+  <div class="styled-form">
+    <div class="d-flex">
+      <button type="button" class="close" aria-label="Close" mat-icon-button color="warn"
+        (click)="modal.dismiss('Cross click')">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+    <h2>Transportista</h2>
+    <div class="form-group">
+      <app-form (messageEvent)="receiveMessage($event)" [shipperChild]="shipperParent"></app-form>
+    </div>
+
+  </div>
+
+</ng-template>
